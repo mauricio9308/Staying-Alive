@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StayingAlive</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_assets_test">AssetsTest</string>
+    <string name="title_activity_external_storage_test">ExternalStorageTestActivity</string>
+    <string name="title_activity_key_test">KeyTestActivity</string>
+
+</resources>
