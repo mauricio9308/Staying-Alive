@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:allowBackup="true"
@@ -51,6 +52,11 @@
             android:name=".FullScreenTestActivity"
             android:label="@string/title_activity_full_test" >
         </activity>
+        <activity
+            android:name=".WakeLockTestActivity"
+            android:label="@string/title_activity_wake_test" >
+        </activity>
+
     </application>
 
 </manifest>

@@ -9,5 +9,6 @@
     <string name="title_activity_key_test">KeyTestActivity</string>
     <string name="title_activity_accel_test">AccelerometerTestActivity</string>
     <string name="title_activity_full_test">FullScreenTestActivity</string>
+    <string name="title_activity_wake_test">WakeLockTestActivity</string>
 
 </resources>
