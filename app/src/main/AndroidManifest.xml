@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="stayingalive.fmat.com.activity" >
+    package="com.fmat.stayingalive.activity" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".AndroidBasicStarter"
+            android:name="com.fmat.stayingalive.activity.AndroidBasicStarter"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +42,14 @@
         <activity
             android:name=".KeyTestActivity"
             android:label="@string/title_activity_key_test" >
+        </activity>
+        <activity
+            android:name=".AccelerometerTestActivity"
+            android:label="@string/title_activity_key_test" >
+        </activity>
+        <activity
+            android:name=".FullScreenTestActivity"
+            android:label="@string/title_activity_full_test" >
         </activity>
     </application>
 

@@ -7,5 +7,7 @@
     <string name="title_activity_assets_test">AssetsTest</string>
     <string name="title_activity_external_storage_test">ExternalStorageTestActivity</string>
     <string name="title_activity_key_test">KeyTestActivity</string>
+    <string name="title_activity_accel_test">AccelerometerTestActivity</string>
+    <string name="title_activity_full_test">FullScreenTestActivity</string>
 
 </resources>
