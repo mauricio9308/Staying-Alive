@@ -64,6 +64,10 @@
             android:name=".ShapeTestActivity"
             android:label="@string/title_activity_shape_test" >
         </activity>
+        <activity
+            android:name=".BitmapTestActivity"
+            android:label="@string/title_activity_bitmap_test" >
+        </activity>
     </application>
 
 </manifest>
