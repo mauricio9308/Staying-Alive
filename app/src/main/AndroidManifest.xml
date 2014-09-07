@@ -68,6 +68,22 @@
             android:name=".BitmapTestActivity"
             android:label="@string/title_activity_bitmap_test" >
         </activity>
+        <activity
+            android:name=".SoundPoolTestActivity"
+            android:label="@string/title_activity_sound_pool_test" >
+        </activity>
+        <activity
+            android:name=".MediaPlayerTestActivity"
+            android:label="@string/title_activity_media_player_test" >
+        </activity>
+        <activity
+            android:name=".FontTestActivity"
+            android:label="@string/title_activity_font_test" >
+        </activity>
+        <activity
+            android:name=".SurfaceViewTestActivity"
+            android:label="@string/title_activity_surface_view_test" >
+        </activity>
     </application>
 
 </manifest>

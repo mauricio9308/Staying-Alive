@@ -12,5 +12,10 @@
     <string name="title_activity_wake_test">WakeLockTestActivity</string>
     <string name="title_activity_shape_test">ShapeTestActivity</string>
     <string name="title_activity_bitmap_test">BitmapTestActivity</string>
+    <string name="title_activity_sound_pool_test">SoundPoolTestActivity</string>
+    <string name="play">Reproducir</string>
+    <string name="title_activity_media_player_test">MediaPlayerTestActivity</string>
+    <string name="title_activity_font_test">FontTestActivity</string>
+    <string name="title_activity_surface_view_test">SurfaceViewTestActivity</string>
 
 </resources>

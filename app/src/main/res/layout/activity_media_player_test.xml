@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fmat.stayingalive.activity.MediaPlayerTestActivity">
+
+    <Button
+        android:text="Play music"
+        android:id="@+id/bttnPlayMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:layout_toRightOf="@id/bttnPlayMusic"
+        android:text="Pause music"
+        android:id="@+id/bttnPauseMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
