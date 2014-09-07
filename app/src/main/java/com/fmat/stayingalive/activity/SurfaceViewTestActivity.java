@@ -79,13 +79,12 @@ public class SurfaceViewTestActivity extends ActionBarActivity {
 
         public void pause(){
             mIsRunning = false;
-            while( true ){
-                try{
-                    mRenderThread.join();
-                }catch ( InterruptedException e ){
-                    if( BuildConfig.DEBUG ){
-                        e.printStackTrace();
-                    }
+
+            try{
+                mRenderThread.join();
+            }catch ( InterruptedException e ){
+                if( BuildConfig.DEBUG ){
+                    e.printStackTrace();
                 }
             }
         }

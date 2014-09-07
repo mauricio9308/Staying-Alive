@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -53,11 +54,12 @@ public class ExternalStorageTestActivity extends ActionBarActivity {
     private String readTextFile( File file ) throws IOException{
         BufferedReader reader = new BufferedReader( new FileReader( file ));
         String text = null;
-        String line = null;
+        String line;
         while ((line = reader.readLine()) != null) {
             text += line;
         }
 
+        Toast.makeText( this, text, Toast.LENGTH_SHORT).show();
         return text;
     }
 
