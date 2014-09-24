@@ -21,4 +21,10 @@
         android:id="@+id/bttnPauseMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lol"
+        android:src="@drawable/ic_launcher"/>
 </RelativeLayout>

@@ -8,5 +8,5 @@ public interface FileIO {
 
 	public InputStream readFile(String fileName) throws IOException;
 
-	public InputStream writeFile(String fileName) throws IOException;
+	public java.io.OutputStream writeFile(String fileName) throws IOException;
 }

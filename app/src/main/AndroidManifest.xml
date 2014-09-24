@@ -84,6 +84,10 @@
             android:name=".SurfaceViewTestActivity"
             android:label="@string/title_activity_surface_view_test" >
         </activity>
+        <activity
+            android:name="com.fmat.stayingalive.framework.MusicAndroid"
+            android:label="@string/title_activity_music_android" >
+        </activity>
     </application>
 
 </manifest>

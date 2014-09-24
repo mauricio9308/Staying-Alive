@@ -16,4 +16,8 @@ public abstract class Screen {
 	public abstract void resume();
 
 	public abstract void dispose();
+
+    public Game getGame(){
+        return mGame;
+    }
 }
