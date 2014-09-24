@@ -58,7 +58,7 @@ public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener {
 
     @Override
     public void pause() {
-
+        //this apparently wasn't in the book
     }
 
     @Override
