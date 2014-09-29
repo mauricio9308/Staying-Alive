@@ -3,7 +3,7 @@ package com.fmat.stayingalive.interfaces;
 public interface Graphics {
 	public Pixmap newPixmap(String fileName, PixmapFormat format);
 
-	public void clear(int color);
+	public void clear(int r, int g, int b);
 
 	public void drawPixel(int x, int y, int color);
 

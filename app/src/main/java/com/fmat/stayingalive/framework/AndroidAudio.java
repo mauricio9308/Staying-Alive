@@ -21,9 +21,8 @@ public class AndroidAudio implements Audio {
     AssetManager manager;
     SoundPool soundPool;
 
-    public AndroidAudio(Activity activity) {
-        activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        this.manager = activity.getAssets();
+    public AndroidAudio(AssetManager manager) {
+        this.manager = manager;
         this.soundPool = new SoundPool(20, AudioManager.STREAM_MUSIC, 0);
     }
 
