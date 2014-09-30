@@ -1,6 +1,10 @@
 package com.fmat.stayingalive.interfaces;
 
 public interface Graphics {
+    public static enum PixmapFormat{
+        ARGB8888, ARGB4444, RGB565
+    }
+
 	public Pixmap newPixmap(String fileName, PixmapFormat format);
 
 	public void clear(int r, int g, int b);

@@ -13,30 +13,31 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Created by Kevin on 9/24/2014.
+ * Created by mauriciolara on 9/22/14.
  */
 public class AndroidFileIO implements FileIO {
 
-    AssetManager manager;
-    String externalStoragePath;
+    private AssetManager mAssetManager;
+    private final String EXTERNAL_STORAGE_PATH;
 
-    public AndroidFileIO(AssetManager manager) {
-        this.manager = manager;
-        this.externalStoragePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator;
+    public AndroidFileIO(AssetManager assetManager) {
+        mAssetManager = assetManager;
+        EXTERNAL_STORAGE_PATH = Environment.getExternalStorageDirectory()
+                .getAbsolutePath() + File.separator;
     }
 
     @Override
     public InputStream readAsset(String fileName) throws IOException {
-        return manager.open(fileName);
+        return mAssetManager.open( fileName );
     }
 
     @Override
     public InputStream readFile(String fileName) throws IOException {
-        return new FileInputStream(externalStoragePath + fileName);
+        return new FileInputStream( EXTERNAL_STORAGE_PATH + fileName );
     }
 
     @Override
     public OutputStream writeFile(String fileName) throws IOException {
-        return new FileOutputStream(externalStoragePath + fileName);
+        return new FileOutputStream( EXTERNAL_STORAGE_PATH + fileName );
     }
 }

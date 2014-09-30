@@ -4,26 +4,28 @@ import android.media.SoundPool;
 
 import com.fmat.stayingalive.interfaces.Sound;
 
-/**
- * Created by Kevin on 9/24/2014.
+/*
+ * Created by mauriciolara on 9/22/14.
+ *
+ * Simple implementation of the sound interface
  */
 public class AndroidSound implements Sound {
 
-    int soundId;
-    SoundPool soundPool;
+    private final int SOUND_ID;
+    private SoundPool mSoundPool;
 
-    public AndroidSound(SoundPool soundPool, int soundId) {
-        this.soundPool = soundPool;
-        this.soundId = soundId;
+    public AndroidSound( SoundPool soundPool, int soundId ){
+        mSoundPool = soundPool;
+        SOUND_ID = soundId;
     }
 
     @Override
     public void play(float volume) {
-        soundPool.play(soundId, volume, volume, 0, 0, 1);
+        mSoundPool.play( SOUND_ID, volume, volume, 0 /* priority */, 0 /* loop */, 1 /* rate */);
     }
 
     @Override
     public void dispose() {
-        soundPool.unload(soundId);
+        mSoundPool.unload( SOUND_ID );
     }
 }

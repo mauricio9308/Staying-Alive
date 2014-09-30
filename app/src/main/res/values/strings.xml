@@ -17,5 +17,6 @@
     <string name="title_activity_media_player_test">MediaPlayerTestActivity</string>
     <string name="title_activity_font_test">FontTestActivity</string>
     <string name="title_activity_surface_view_test">SurfaceViewTestActivity</string>
+    <string name="title_activity_music_android">MusicAndroid</string>
 
 </resources>

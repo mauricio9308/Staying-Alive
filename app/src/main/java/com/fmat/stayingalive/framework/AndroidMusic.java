@@ -8,38 +8,39 @@ import com.fmat.stayingalive.interfaces.Music;
 import java.io.IOException;
 
 /**
- * Created by Kevin on 9/24/2014.
+ * Created by mauriciolara on 9/22/14.
  */
-public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener {
+public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener{
 
-    MediaPlayer mediaPlayer;
-    boolean isPrepared = false;
+    private MediaPlayer mMediaPlayer;
+    private boolean mIsPrepared = false;
 
-    public AndroidMusic(AssetFileDescriptor assetFileDescriptor) {
-        mediaPlayer = new MediaPlayer();
-        try {
-            mediaPlayer.setDataSource(assetFileDescriptor.getFileDescriptor(),
-                    assetFileDescriptor.getStartOffset(),
-                    assetFileDescriptor.getLength());
-            mediaPlayer.prepare();
-            isPrepared = true;
-            mediaPlayer.setOnCompletionListener(this);
-        } catch (Exception e) {
-            throw new RuntimeException("Couldn't load music");
+    public AndroidMusic( AssetFileDescriptor fileDescriptor ){
+        mMediaPlayer = new MediaPlayer();
+        try{
+            mMediaPlayer.setDataSource( fileDescriptor.getFileDescriptor(),
+                    fileDescriptor.getStartOffset(),
+                    fileDescriptor.getLength() );
+            mMediaPlayer.prepare();
+            mIsPrepared = true;
+            mMediaPlayer.setOnCompletionListener( AndroidMusic.this /* MediaPlayer.OnCompletionListener */);
+        }catch( IOException e ){
+            throw new RuntimeException("Error while loading the music file in "
+                    + AndroidMusic.class.getSimpleName() );
         }
     }
 
     @Override
     public void play() {
-        if (mediaPlayer.isPlaying()) {
+        if (mMediaPlayer.isPlaying()) {
             return;
         }
         try {
             synchronized (this) {
-                if (!isPrepared) {
-                    mediaPlayer.prepare();
+                if (!mIsPrepared) {
+                    mMediaPlayer.prepare();
                 }
-                mediaPlayer.start();
+                mMediaPlayer.start();
             }
         } catch (IllegalStateException e) {
             e.printStackTrace();
@@ -50,9 +51,9 @@ public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener {
 
     @Override
     public void stop() {
-        mediaPlayer.stop();
+        mMediaPlayer.stop();
         synchronized (this) {
-            isPrepared = false;
+            mIsPrepared = false;
         }
     }
 
@@ -63,35 +64,35 @@ public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener {
 
     @Override
     public void setLooping(boolean looping) {
-        mediaPlayer.setLooping(looping);
+        mMediaPlayer.setLooping(looping);
     }
 
     @Override
     public void setVolume(float volume) {
-        mediaPlayer.setVolume(volume, volume);
+        mMediaPlayer.setVolume(volume, volume);
     }
 
     @Override
     public boolean isPlaying() {
-        return mediaPlayer.isPlaying();
+        return mMediaPlayer.isPlaying();
     }
 
     @Override
     public boolean isStopped() {
-        return !isPrepared;
+        return !mIsPrepared;
     }
 
     @Override
     public boolean isLooping() {
-        return mediaPlayer.isLooping();
+        return mMediaPlayer.isLooping();
     }
 
     @Override
     public void dispose() {
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
+        if (mMediaPlayer.isPlaying()) {
+            mMediaPlayer.stop();
         }
-        mediaPlayer.release();
+        mMediaPlayer.release();
     }
 
     @Override
@@ -100,4 +101,5 @@ public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener {
             isPrepared = false;
         }
     }
+
 }
