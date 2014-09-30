@@ -1,6 +1,7 @@
 package com.fmat.stayingalive.framework;
 
 import android.content.Context;
+import android.view.View;
 
 import com.fmat.stayingalive.interfaces.Input;
 
@@ -12,14 +13,17 @@ import java.util.List;
 public class AndroidInput implements Input {
 
     AccelerometerHandler accelerometerHandler;
+    KeyboardHandler keyboardHandler;
 
-    public AndroidInput(Context context) {
+
+    public AndroidInput(Context context, View view) {
         accelerometerHandler = new AccelerometerHandler(context);
+        keyboardHandler = new KeyboardHandler(view);
     }
 
     @Override
     public boolean isKeyPressed(int keyCode) {
-        return false;
+        return keyboardHandler.isKeyPressed(keyCode);
     }
 
     @Override

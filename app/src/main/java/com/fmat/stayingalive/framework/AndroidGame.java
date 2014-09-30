@@ -27,6 +27,7 @@ public abstract class AndroidGame extends ActionBarActivity implements Game  {
     Screen mScreen;
     AndroidFileIO mFileIO;
     AndroidAudio mAudio;
+    AndroidInput mInput;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,7 @@ public abstract class AndroidGame extends ActionBarActivity implements Game  {
         mAudio = new AndroidAudio(getAssets());
 
         //input
-
+        mInput = new AndroidInput(this, mRenderView);
 
         //screen
         mScreen = getStartScreen();
