@@ -32,55 +32,74 @@ public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener{
 
     @Override
     public void play() {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void setLooping(boolean looping) {
-
-    }
-
-    @Override
-    public void setVolume(float volume) {
-
-    }
-
-    @Override
-    public boolean isPlaying() {
-        return false;
-    }
-
-    @Override
-    public boolean isStopped() {
-        return false;
-    }
-
-    @Override
-    public boolean isLooping() {
-        return false;
-    }
-
-    @Override
-    public void dispose() {
-        if( mMediaPlayer.isPlaying() ){
-            mMediaPlayer.stop();
-        }else{
-            mMediaPlayer.release();
+        if (mMediaPlayer.isPlaying()) {
+            return;
+        }
+        try {
+            synchronized (this) {
+                if (!mIsPrepared) {
+                    mMediaPlayer.prepare();
+                }
+                mMediaPlayer.start();
+            }
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
-    public void onCompletion(MediaPlayer mp) {
-
+    public void stop() {
+        mMediaPlayer.stop();
+        synchronized (this) {
+            mIsPrepared = false;
+        }
     }
+
+    @Override
+    public void pause() {
+        //this apparently wasn't in the book
+    }
+
+    @Override
+    public void setLooping(boolean looping) {
+        mMediaPlayer.setLooping(looping);
+    }
+
+    @Override
+    public void setVolume(float volume) {
+        mMediaPlayer.setVolume(volume, volume);
+    }
+
+    @Override
+    public boolean isPlaying() {
+        return mMediaPlayer.isPlaying();
+    }
+
+    @Override
+    public boolean isStopped() {
+        return !mIsPrepared;
+    }
+
+    @Override
+    public boolean isLooping() {
+        return mMediaPlayer.isLooping();
+    }
+
+    @Override
+    public void dispose() {
+        if (mMediaPlayer.isPlaying()) {
+            mMediaPlayer.stop();
+        }
+        mMediaPlayer.release();
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+        synchronized (this) {
+            isPrepared = false;
+        }
+    }
+
 }

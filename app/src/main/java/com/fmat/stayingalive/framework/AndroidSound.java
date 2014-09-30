@@ -4,7 +4,7 @@ import android.media.SoundPool;
 
 import com.fmat.stayingalive.interfaces.Sound;
 
-/**
+/*
  * Created by mauriciolara on 9/22/14.
  *
  * Simple implementation of the sound interface
