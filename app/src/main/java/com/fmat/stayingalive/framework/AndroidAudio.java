@@ -31,6 +31,11 @@ public class AndroidAudio implements Audio{
                 AudioManager.STREAM_MUSIC, 0 /* srcQuality */);
     }
 
+    public AndroidAudio(AssetManager manager) {
+        mAssetManager = manager;
+        mSoundPool = new SoundPool(20, AudioManager.STREAM_MUSIC, 0);
+    }
+
     @Override
     public Music newMusic(String fileName) {
         try{
