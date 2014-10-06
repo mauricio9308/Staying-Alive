@@ -1,11 +1,8 @@
 package com.fmat.stayingalive.mrnom;
 
-import android.text.method.Touch;
-
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
 import com.fmat.stayingalive.interfaces.Input;
-import com.fmat.stayingalive.interfaces.Screen;
 import com.fmat.stayingalive.interfaces.TouchEvent;
 
 import java.util.List;
@@ -22,6 +19,10 @@ public class MenuScreen extends ScreenBase {
     @Override
     public void update(float deltaTime) {
         List<Input.TouchEvent> touchEventList = mGame.getInput().getTouchEvents();
+
+        if( touchEventList == null ){
+            return;
+        }
 
         for(Input.TouchEvent event : touchEventList) {
             if (event.type == TouchEvent.TOUCH_UP) {

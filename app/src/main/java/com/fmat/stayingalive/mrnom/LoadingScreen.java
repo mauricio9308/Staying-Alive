@@ -7,15 +7,16 @@ import com.fmat.stayingalive.interfaces.Screen;
 
 public class LoadingScreen extends Screen {
 
-    Game game;
+    private Game mGame;
 
     public LoadingScreen(Game game) {
         super(game);
+        mGame = game;
     }
 
     @Override
     public void update(float deltaTime) {
-        Graphics g = game.getGraphics();
+        Graphics g = mGame.getGraphics();
         Assets.background = g.newPixmap("background.png", PixmapFormat.RGB565);
         Assets.logo = g.newPixmap("logo.png", PixmapFormat.ARGB4444);
         Assets.mainMenu = g.newPixmap("mainmenu.png", PixmapFormat.ARGB4444);
@@ -35,11 +36,11 @@ public class LoadingScreen extends Screen {
         Assets.stain1 = g.newPixmap("stain1.png", PixmapFormat.ARGB4444);
         Assets.stain2 = g.newPixmap("stain2.png", PixmapFormat.ARGB4444);
         Assets.stain3 = g.newPixmap("stain3.png", PixmapFormat.ARGB4444);
-        Assets.click = game.getAudio().newSound("click.ogg");
-        Assets.eat = game.getAudio().newSound("eat.ogg");
-        Assets.bitten = game.getAudio().newSound("bitten.ogg");
-        Settings.load(game.getFileIO());
-        game.setScreen(new MenuScreen(game));
+        Assets.click = mGame.getAudio().newSound("click.ogg");
+        Assets.eat = mGame.getAudio().newSound("eat.ogg");
+        Assets.bitten = mGame.getAudio().newSound("bitten.ogg");
+        Settings.load(mGame.getFileIO());
+        mGame.setScreen(new MenuScreen(mGame));
     }
 
     @Override

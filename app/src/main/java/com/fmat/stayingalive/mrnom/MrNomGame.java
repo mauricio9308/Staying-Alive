@@ -9,6 +9,6 @@ import com.fmat.stayingalive.interfaces.Screen;
 public class MrNomGame extends AndroidGame {
     @Override
     public Screen getStartScreen() {
-        return new LoadingScreen(this);
+        return new LoadingScreen( MrNomGame.this );
     }
 }
