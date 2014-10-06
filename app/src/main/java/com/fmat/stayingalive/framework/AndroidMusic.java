@@ -98,7 +98,7 @@ public class AndroidMusic implements Music, MediaPlayer.OnCompletionListener{
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
         synchronized (this) {
-            isPrepared = false;
+            mIsPrepared = false;
         }
     }
 

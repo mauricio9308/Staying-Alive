@@ -1,8 +1,8 @@
 package com.fmat.stayingalive.framework;
 
 import com.fmat.stayingalive.interfaces.Game;
-import com.fmat.stayingalive.interfaces.Graphics;
 import com.fmat.stayingalive.interfaces.Pixmap;
+import com.fmat.stayingalive.interfaces.PixmapFormat;
 import com.fmat.stayingalive.interfaces.Screen;
 
 /**
@@ -16,7 +16,7 @@ public class InitialScreen extends Screen {
     public InitialScreen( Game game ){
        super( game );
        mSampleImage = game.getGraphics().newPixmap("data/pic.png",
-               Graphics.PixmapFormat.ARGB8888 );
+               PixmapFormat.ARGB8888 );
     }
 
     @Override
@@ -29,7 +29,7 @@ public class InitialScreen extends Screen {
 
     @Override
     public void present(float deltaTime) {
-        getGame().getGraphics().clear(0);
+        getGame().getGraphics().clear(0, 0, 0);
         getGame().getGraphics().drawPixmap( mSampleImage, (int)mXValue, 0, 0, 0,
                 mSampleImage.getWidth(), mSampleImage.getHeight() );
 

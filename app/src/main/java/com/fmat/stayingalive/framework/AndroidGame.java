@@ -21,13 +21,13 @@ import com.fmat.stayingalive.interfaces.Screen;
  */
 public abstract class AndroidGame extends ActionBarActivity implements Game  {
 
-    AndroidFastRenderView mRenderView;
-    AndroidGraphics mGraphics;
-    PowerManager.WakeLock mWakeLock;
-    Screen mScreen;
-    AndroidFileIO mFileIO;
-    AndroidAudio mAudio;
-    AndroidInput mInput;
+    private AndroidFastRenderView mRenderView;
+    private AndroidGraphics mGraphics;
+    private PowerManager.WakeLock mWakeLock;
+    private Screen mScreen;
+    private AndroidFileIO mFileIO;
+    private AndroidAudio mAudio;
+    private AndroidInput mInput;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +70,12 @@ public abstract class AndroidGame extends ActionBarActivity implements Game  {
 
     @Override
     public Input getInput() {
-        return null;
+        return mInput;
     }
 
     @Override
     public FileIO getFileIO() {
-        return null;
+        return mFileIO;
     }
 
     @Override
@@ -85,16 +85,17 @@ public abstract class AndroidGame extends ActionBarActivity implements Game  {
 
     @Override
     public Audio getAudio() {
-        return null;
+        return mAudio;
     }
 
     @Override
     public void setScreen(Screen screen) {
         if (screen == null) {
-            return;
+            throw new IllegalArgumentException("Null screen in Android Game");
         }
         mScreen.pause();
-        mScreen.resume();
+        mScreen.dispose();
+
         screen.resume();
         screen.update(0);
         mScreen = screen;
@@ -108,8 +109,12 @@ public abstract class AndroidGame extends ActionBarActivity implements Game  {
     public void onPause() {
         super.onPause();
         mWakeLock.release();
-        mScreen.pause();
         mRenderView.pause();
+        mScreen.pause();
+
+        if( isFinishing() ){
+            mScreen.dispose();
+        }
     }
 
 
