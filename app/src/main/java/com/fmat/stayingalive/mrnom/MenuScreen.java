@@ -2,7 +2,6 @@ package com.fmat.stayingalive.mrnom;
 
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
-import com.fmat.stayingalive.interfaces.Input;
 import com.fmat.stayingalive.interfaces.TouchEvent;
 
 import java.util.List;
@@ -18,28 +17,33 @@ public class MenuScreen extends ScreenBase {
 
     @Override
     public void update(float deltaTime) {
-        List<Input.TouchEvent> touchEventList = mGame.getInput().getTouchEvents();
+        Graphics gameGraphics = getGame().getGraphics();
+        List<TouchEvent> touchEventList = mGame.getInput().getTouchEvents();
+
 
         if( touchEventList == null ){
             return;
         }
 
-        for(Input.TouchEvent event : touchEventList) {
+        for(TouchEvent event : touchEventList) {
             if (event.type == TouchEvent.TOUCH_UP) {
-                if (inBounds(event, 0, 416, 64, 64)) {
-                    Settings.soundEnabled = !Settings.soundEnabled;
-                    if (Settings.soundEnabled) {
-                        playSound();
-                    }
+
+                if(inBounds(event, 0, gameGraphics.getHeight() - 64, 64, 64)) { Settings.soundEnabled = !Settings.soundEnabled; if(Settings.soundEnabled)
+                    Assets.click.play(1);
                 }
 
-                if (inBounds(event, 64, 220, 192, 42)) {
+                if(inBounds(event, 64, 220, 192, 42) ) {
+                    //getGame().setScreen(new GameScreen(getGame())); if(Settings.soundEnabled)
+                     //   Assets.click.play(1); return;
                     playSound();
                 }
-                if (inBounds(event, 64, 262, 192, 42)) {
-                    playSound();
+                if(inBounds(event, 64, 220 + 42, 192, 42) ) {
+                    getGame().setScreen(new HighScoresScreen(getGame())); if(Settings.soundEnabled)
+                        Assets.click.play(1); return;
                 }
-                if (inBounds(event, 64, 304, 192, 42)) {
+                if(inBounds(event, 64, 220 + 84, 192, 42) ) {
+                   // getGame().setScreen(new HelpScreen(getGame())); if(Settings.soundEnabled)
+                    //    Assets.click.play(1); return;
                     playSound();
                 }
             }

@@ -2,7 +2,6 @@ package com.fmat.stayingalive.mrnom;
 
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
-import com.fmat.stayingalive.interfaces.Input;
 import com.fmat.stayingalive.interfaces.TouchEvent;
 
 import java.util.List;
@@ -23,9 +22,9 @@ public class HighScoresScreen extends ScreenBase {
 
     @Override
     public void update(float deltaTime) {
-        List<Input.TouchEvent> touchEventList = mGame.getInput().getTouchEvents();
+        List<TouchEvent> touchEventList = mGame.getInput().getTouchEvents();
 
-        for(Input.TouchEvent event : touchEventList) {
+        for(TouchEvent event : touchEventList) {
             if (event.type == TouchEvent.TOUCH_UP) {
                 if (inBounds(event, 0, 416, 64, 64)) {
                     Settings.soundEnabled = !Settings.soundEnabled;

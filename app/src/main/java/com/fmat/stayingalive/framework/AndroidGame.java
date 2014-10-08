@@ -54,8 +54,14 @@ public abstract class AndroidGame extends ActionBarActivity implements Game  {
         //audio
         mAudio = new AndroidAudio(getAssets());
 
+
+        float scaleX = (float) frameBufferWidth
+                / getWindowManager().getDefaultDisplay().getWidth();
+        float scaleY = (float) frameBufferHeight
+                / getWindowManager().getDefaultDisplay().getHeight();
+
         //input
-        mInput = new AndroidInput(this, mRenderView);
+        mInput = new AndroidInput(this, mRenderView, scaleX, scaleY);
 
         //screen
         mScreen = getStartScreen();

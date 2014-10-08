@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.fmat.stayingalive.interfaces.Input;
+import com.fmat.stayingalive.interfaces.TouchEvent;
 
 import java.util.List;
 
@@ -12,48 +13,49 @@ import java.util.List;
  */
 public class AndroidInput implements Input {
 
-    AccelerometerHandler accelerometerHandler;
-    KeyboardHandler keyboardHandler;
+    private AccelerometerHandler mAccelerometerHandler;
+    private KeyboardHandler mKeyboardHandler;
+    private MultiTouchHandler mTouchHandler;
 
-
-    public AndroidInput(Context context, View view) {
-        accelerometerHandler = new AccelerometerHandler(context);
-        keyboardHandler = new KeyboardHandler(view);
+    public AndroidInput(Context context, View view, float x, float y) {
+        mAccelerometerHandler = new AccelerometerHandler(context);
+        mKeyboardHandler = new KeyboardHandler(view);
+        mTouchHandler = new MultiTouchHandler( view, x, y );
     }
 
     @Override
     public boolean isKeyPressed(int keyCode) {
-        return keyboardHandler.isKeyPressed(keyCode);
+        return mKeyboardHandler.isKeyPressed(keyCode);
     }
 
     @Override
     public boolean isTouchDown(int pointer) {
-        return false;
+        return mTouchHandler.isTouchDown( pointer );
     }
 
     @Override
     public int getTouchX(int pointer) {
-        return 0;
+        return mTouchHandler.getTouchX(pointer);
     }
 
     @Override
     public int getTouchY(int pointer) {
-        return 0;
+        return mTouchHandler.getTouchY( pointer );
     }
 
     @Override
     public float getAccelX() {
-        return accelerometerHandler.accelX;
+        return mAccelerometerHandler.accelX;
     }
 
     @Override
     public float getAccelY() {
-        return accelerometerHandler.accelY;
+        return mAccelerometerHandler.accelY;
     }
 
     @Override
     public float getAccelZ() {
-        return accelerometerHandler.accelZ;
+        return mAccelerometerHandler.accelZ;
     }
 
     @Override
@@ -63,6 +65,6 @@ public class AndroidInput implements Input {
 
     @Override
     public List<TouchEvent> getTouchEvents() {
-        return null;
+        return mTouchHandler.getTouchEvents();
     }
 }
