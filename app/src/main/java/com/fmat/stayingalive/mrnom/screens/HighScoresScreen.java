@@ -1,22 +1,26 @@
-package com.fmat.stayingalive.mrnom;
-
-import android.text.method.Touch;
+package com.fmat.stayingalive.mrnom.screens;
 
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
 import com.fmat.stayingalive.interfaces.Input;
-import com.fmat.stayingalive.interfaces.Screen;
 import com.fmat.stayingalive.interfaces.TouchEvent;
+import com.fmat.stayingalive.mrnom.Assets;
+import com.fmat.stayingalive.mrnom.Settings;
 
 import java.util.List;
 
 /**
  * Created by Kevin on 01/10/2014.
  */
-public class MenuScreen extends ScreenBase {
+public class HighScoresScreen extends ScreenBase {
 
-    public MenuScreen(Game game) {
+    String[] lines = new String[5];
+
+    public HighScoresScreen(Game game) {
         super(game);
+        for (int i = 0; i < lines.length; i++) {
+            lines[i] = (i + 1) + ". " + Settings.highscores[i];
+        }
     }
 
     @Override
@@ -29,6 +33,7 @@ public class MenuScreen extends ScreenBase {
                     Settings.soundEnabled = !Settings.soundEnabled;
                     if (Settings.soundEnabled) {
                         playSound();
+                        mGame.setScreen(new MenuScreen(mGame));
                     }
                 }
 
@@ -49,18 +54,18 @@ public class MenuScreen extends ScreenBase {
     public void present(float deltaTime) {
         Graphics graphics = mGame.getGraphics();
         graphics.drawPixmap(Assets.background, 0, 0);
-        graphics.drawPixmap(Assets.logo, 32, 20);
-        graphics.drawPixmap(Assets.mainMenu, 64, 220);
-        if (Settings.soundEnabled) {
-            graphics.drawPixmap(Assets.buttons, 0, 416, 0, 0, 64, 64);
-        } else {
-            graphics.drawPixmap(Assets.buttons, 0, 416, 64, 0, 64, 64);
+        graphics.drawPixmap(Assets.mainMenu, 64, 20, 0, 42, 196, 42);
+        graphics.drawPixmap(Assets.buttons, 0, 416, 64, 64, 64, 64);
+
+        int y = 100;
+        for (int i = 0; i < lines.length; i++) {
+
         }
     }
 
     @Override
     public void pause() {
-        Settings.save(mGame.getFileIO());
+
     }
 
     @Override
