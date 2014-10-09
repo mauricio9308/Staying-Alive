@@ -4,6 +4,7 @@ import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
 import com.fmat.stayingalive.interfaces.PixmapFormat;
 import com.fmat.stayingalive.interfaces.Screen;
+import com.fmat.stayingalive.mrnom.screens.MenuScreen;
 
 public class LoadingScreen extends Screen {
 

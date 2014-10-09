@@ -1,8 +1,12 @@
-package com.fmat.stayingalive.mrnom;
+package com.fmat.stayingalive.mrnom.screens;
 
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
+import com.fmat.stayingalive.interfaces.Input;
+
 import com.fmat.stayingalive.interfaces.TouchEvent;
+import com.fmat.stayingalive.mrnom.Assets;
+import com.fmat.stayingalive.mrnom.Settings;
 
 import java.util.List;
 
