@@ -96,6 +96,10 @@ public abstract class ScreenBase extends Screen {
 
         graphics.drawPixmap(headPixmap, head.x * 32, head.y * 32);
 
+        String score = String.valueOf(world.score);
+
+        drawText(graphics, score, graphics.getWidth() / 2 - (score.length()*20)/2, graphics.getHeight() - 42);
+
     }
 
 

@@ -7,6 +7,7 @@ import com.fmat.stayingalive.interfaces.Graphics;
 import com.fmat.stayingalive.interfaces.Input;
 import com.fmat.stayingalive.interfaces.TouchEvent;
 import com.fmat.stayingalive.mrnom.Assets;
+import com.fmat.stayingalive.mrnom.world.World;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class GameScreenIntro extends ScreenBase {
 
     public GameScreenIntro(Game game) {
         super(game);
+        World world = getWorld();
+        world.restart();
     }
 
     @Override
