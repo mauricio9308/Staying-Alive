@@ -43,7 +43,7 @@ public class MenuScreen extends ScreenBase {
                 }
 
                 if (inBounds(event, 64, 220, 192, 42)) {
-                    getGame().setScreen(new GameScreen(getGame()));
+                    getGame().setScreen(new BookGameScreen(getGame()));
                     if (Settings.soundEnabled) {
                         Assets.click.play(1);
                     }

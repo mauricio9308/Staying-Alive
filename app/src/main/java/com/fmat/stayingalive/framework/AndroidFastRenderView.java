@@ -1,10 +1,8 @@
 package com.fmat.stayingalive.framework;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -39,7 +37,7 @@ public class AndroidFastRenderView extends SurfaceView implements Runnable {
             if(!mSurfaceHolder.getSurface().isValid()){
                 continue;
             }
-            float deltaTime = (System.nanoTime() - startTime);
+            float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
             startTime = System.nanoTime();
 
             mGame.getCurrentScreen().update(deltaTime);

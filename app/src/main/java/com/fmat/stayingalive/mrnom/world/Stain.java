@@ -6,8 +6,8 @@ package com.fmat.stayingalive.mrnom.world;
 public class Stain {
 
     public static final int TYPE_1 = 0;
-    public static final int TYPE_2 = 0;
-    public static final int TYPE_3 = 0;
+    public static final int TYPE_2 = 1;
+    public static final int TYPE_3 = 2;
 
     public int x, y;
     public int type;

@@ -6,7 +6,6 @@ import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
 import com.fmat.stayingalive.interfaces.TouchEvent;
 import com.fmat.stayingalive.mrnom.Assets;
-import com.fmat.stayingalive.mrnom.world.World;
 
 import java.util.List;
 
@@ -20,7 +19,6 @@ public class GameScreenPause extends ScreenBase {
     public void update(float deltaTime) {
 
         List<TouchEvent> events = mGame.getInput().getTouchEvents();
-        World world = getWorld();
 
         for (TouchEvent event : events) {
             if (event.type == TouchEvent.TOUCH_UP) {
