@@ -28,23 +28,15 @@ public class HighScoresScreen extends ScreenBase {
 
         for(TouchEvent event : touchEventList) {
             if (event.type == TouchEvent.TOUCH_UP) {
-                if (inBounds(event, 0, 416, 64, 64)) {
-                    Settings.soundEnabled = !Settings.soundEnabled;
-                    if (Settings.soundEnabled) {
-                        playSound();
-                        mGame.setScreen(new MenuScreen(mGame));
+                if( event.x < 64 && event.y > 416 ){
+                    if( Settings.soundEnabled){
+                        Assets.click.play(1);
                     }
+
+                    getGame().setScreen( new MenuScreen( getGame() ));
+                    return;
                 }
 
-                if (inBounds(event, 64, 220, 192, 42)) {
-                    playSound();
-                }
-                if (inBounds(event, 64, 262, 192, 42)) {
-                    playSound();
-                }
-                if (inBounds(event, 64, 304, 192, 42)) {
-                    playSound();
-                }
             }
         }
     }
@@ -54,12 +46,14 @@ public class HighScoresScreen extends ScreenBase {
         Graphics graphics = mGame.getGraphics();
         graphics.drawPixmap(Assets.background, 0, 0);
         graphics.drawPixmap(Assets.mainMenu, 64, 20, 0, 42, 196, 42);
-        graphics.drawPixmap(Assets.buttons, 0, 416, 64, 64, 64, 64);
 
         int y = 100;
         for (int i = 0; i < lines.length; i++) {
-
+            drawText(graphics, lines[i], 20, y );
+            y += 50;
         }
+
+        graphics.drawPixmap( Assets.buttons, 0, 416, 64, 64, 64, 64 );
     }
 
     @Override
@@ -76,4 +70,5 @@ public class HighScoresScreen extends ScreenBase {
     public void dispose() {
 
     }
+
 }

@@ -34,10 +34,12 @@ public abstract class ScreenBase extends Screen {
     }
 
     protected boolean inBounds(TouchEvent event, int x, int y, int width, int height) {
-        if (event.x > x && event.x < x + width && event.y > y && event.y > y + height) {
+        if(event.x > x && event.x < x + width - 1 &&
+                event.y > y && event.y < y + height - 1){
             return true;
+        }else {
+            return false;
         }
-        return false;
     }
 
     protected void drawText(Graphics graphics, String line, int x, int y) {

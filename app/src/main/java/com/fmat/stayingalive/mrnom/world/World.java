@@ -33,7 +33,7 @@ public class World {
 
     private void placeStain() {
         for (int i = 0; i < WORLD_WIDTH; i++) {
-            for (int j = 0; i < WORLD_HEIGHT; j++) {
+            for (int j = 0; j < WORLD_HEIGHT; j++) {
                 fields[i][j] = false;
             }
         }

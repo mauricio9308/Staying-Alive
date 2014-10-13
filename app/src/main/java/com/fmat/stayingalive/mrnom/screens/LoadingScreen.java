@@ -1,10 +1,11 @@
-package com.fmat.stayingalive.mrnom;
+package com.fmat.stayingalive.mrnom.screens;
 
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
 import com.fmat.stayingalive.interfaces.PixmapFormat;
 import com.fmat.stayingalive.interfaces.Screen;
-import com.fmat.stayingalive.mrnom.screens.MenuScreen;
+import com.fmat.stayingalive.mrnom.Assets;
+import com.fmat.stayingalive.mrnom.Settings;
 
 public class LoadingScreen extends Screen {
 

@@ -2,6 +2,7 @@ package com.fmat.stayingalive.mrnom;
 
 import com.fmat.stayingalive.framework.AndroidGame;
 import com.fmat.stayingalive.interfaces.Screen;
+import com.fmat.stayingalive.mrnom.screens.LoadingScreen;
 import com.fmat.stayingalive.mrnom.world.World;
 
 /**

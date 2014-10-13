@@ -1,5 +1,9 @@
 package com.fmat.stayingalive.interfaces;
 
+import android.content.Context;
+
+import com.fmat.stayingalive.framework.AndroidGame;
+
 public abstract class Screen {
 	protected final Game mGame;
 
@@ -19,5 +23,9 @@ public abstract class Screen {
 
     public Game getGame(){
         return mGame;
+    }
+
+    public Context getContext(){
+        return (AndroidGame) mGame;
     }
 }

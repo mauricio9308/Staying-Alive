@@ -35,17 +35,47 @@ public class AndroidGraphics implements Graphics {
 
     @Override
     public Pixmap newPixmap(String fileName, PixmapFormat format) {
+        Bitmap.Config config = null;
+        if( format == PixmapFormat.RGB565 ){
+            config = Bitmap.Config.RGB_565;
+        }else{
+            if( format == PixmapFormat.ARGB4444 ){
+                config = Bitmap.Config.ARGB_4444;
+            }else{
+                config = Bitmap.Config.ARGB_8888;
+            }
+        }
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = config;
+
+
         InputStream in = null;
         Bitmap bitmap = null;
-
         try {
             in = mManager.open(fileName);
             bitmap = BitmapFactory.decodeStream(in);
+            if( bitmap == null ){
+                throw new RuntimeException("Couldn't load bitmap from asset '" + fileName + "'");
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Couldn't load bitmap from asset '"
+                    + fileName + "'");
+        }finally {
+            if( in != null ){
+                try{
+                    in.close();
+                }catch ( IOException e ){
+                    /* Nothing to do */
+                }
+            }
         }
 
         return new AndroidPixmap(bitmap, format);
+    }
+
+    public void clear( int color ){
+        mCanvas.drawRGB((color & 0xff0000) >> 16, (color & 0xff00) >> 8, (color & 0xff));
     }
 
     @Override
@@ -68,12 +98,21 @@ public class AndroidGraphics implements Graphics {
     @Override
     public void drawRect(int x, int y, int width, int height, int color) {
         mPaint.setColor(color);
+        mPaint.setStyle(Paint.Style.FILL);
         mCanvas.drawRect(x, y, x + width, y + height, mPaint);
     }
 
     @Override
     public void drawPixmap(Pixmap pixmap, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight) {
-
+        mSrc.left = srcX;
+        mSrc.top = srcY;
+        mSrc.right = srcX + srcWidth - 1;
+        mSrc.bottom = srcY + srcHeight - 1;
+        mDst.left = x;
+        mDst.top = y;
+        mDst.right = x + srcWidth - 1;
+        mDst.bottom = y + srcHeight - 1;
+        mCanvas.drawBitmap(((AndroidPixmap) pixmap).mBitmap, mSrc, mDst, null);
     }
 
     @Override
