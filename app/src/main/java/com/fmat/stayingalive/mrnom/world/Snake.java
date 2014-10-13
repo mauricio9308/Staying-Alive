@@ -42,7 +42,7 @@ public class Snake {
     public void advance() {
         SnakePart head = parts.get(0);
 
-        for (int i = parts.size(); i > 0; i--) {
+        for (int i = parts.size() - 1; i > 0; i--) {
             SnakePart before = parts.get(i - 1);
             SnakePart after = parts.get(i);
             after.x = before.x;

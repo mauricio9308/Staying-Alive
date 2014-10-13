@@ -10,7 +10,7 @@ public class World {
     static final int WORLD_WIDTH = 10;
     static final int WORLD_HEIGHT = 19;
     static final int SCORE_INCREMENT = 10;
-    static final float TICK_INITIAL = 0.5f;
+    static final float TICK_INITIAL = 2f;
     static final float TICK_DECREMENT = 0.005f;
 
     public int score = 0;
@@ -29,6 +29,15 @@ public class World {
     public World() {
         snake = new Snake();
         placeStain();
+    }
+
+    public void restart() {
+        placeStain();
+        snake = new Snake();
+        tick = TICK_INITIAL;
+        tickTime = 0f;
+        score = 0;
+        gameOver = false;
     }
 
     private void placeStain() {
