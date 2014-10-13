@@ -2,10 +2,9 @@ package com.fmat.stayingalive.mrnom.screens;
 
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
-import com.fmat.stayingalive.interfaces.Input;
 import com.fmat.stayingalive.interfaces.Pixmap;
-import com.fmat.stayingalive.interfaces.PixmapFormat;
 import com.fmat.stayingalive.interfaces.Screen;
+import com.fmat.stayingalive.interfaces.TouchEvent;
 import com.fmat.stayingalive.mrnom.Assets;
 import com.fmat.stayingalive.mrnom.MrNomGame;
 import com.fmat.stayingalive.mrnom.Settings;
@@ -34,7 +33,7 @@ public abstract class ScreenBase extends Screen {
         }
     }
 
-    protected boolean inBounds(Input.TouchEvent event, int x, int y, int width, int height) {
+    protected boolean inBounds(TouchEvent event, int x, int y, int width, int height) {
         if (event.x > x && event.x < x + width && event.y > y && event.y > y + height) {
             return true;
         }

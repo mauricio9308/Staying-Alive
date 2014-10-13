@@ -4,7 +4,6 @@ import android.graphics.Color;
 
 import com.fmat.stayingalive.interfaces.Game;
 import com.fmat.stayingalive.interfaces.Graphics;
-import com.fmat.stayingalive.interfaces.Input;
 import com.fmat.stayingalive.interfaces.TouchEvent;
 import com.fmat.stayingalive.mrnom.Assets;
 
@@ -21,7 +20,7 @@ public class GameScreenIntro extends ScreenBase {
 
     @Override
     public void update(float deltaTime) {
-        List<Input.TouchEvent> events = mGame.getInput().getTouchEvents();
+        List<TouchEvent> events = mGame.getInput().getTouchEvents();
         if (events.size() > 0) {
             mGame.setScreen(new GameScreen(mGame));
         }
