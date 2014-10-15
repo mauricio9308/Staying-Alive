@@ -15,9 +15,12 @@ public class World {
 
     public static final int NORMAL_MOVEMENT_SPEED = 0; //dummy
     public static final int BOOSTED_MOVEMENT_SPEED = 0; //dummy
-
     public static final int INVINCIBILITY_DURATION = 0; //dummy
     public static final int SPEEDUP_DURATION = 0; //dummy
+
+    public static final int SHIELD_WIDTH = 0; //dummy
+    public static final int SHIELD_HEIGHT = 0; //dummy
+
 
     Player player;
     ArrayList<Bullet> bullets;
@@ -34,6 +37,9 @@ public class World {
 
     public boolean isGameOver;
 
+    static final float TICK_DURATION = 0.01f; //DUMMY
+    float tickTime = 0f;
+
     public World() {
         player = new Player();
         bullets = new ArrayList<Bullet>();
@@ -47,12 +53,34 @@ public class World {
 
     public void update(float deltaTime) {
 
+        tickTime += deltaTime;
 
+        if(tickTime > TICK_DURATION) {
+            tickTime = 0f;
+            for(Bullet bullet : bullets) {
+                bullet.move();
+            }
+            for(PowerUp powerUp : powerUps) {
+                powerUp.move();
+            }
+
+            //TODO make player slowly jump and then return to ground depending on its jumpState (from 1-5 should go up, 5-10 should return to floor)
+
+            if (isShieldActive) {
+                int shieldX = (player.orientation == Player.Orientation.RIGHT) ? player.x + SHIELD_WIDTH : player.x - SHIELD_WIDTH ;
+                int shieldY = player.y;
+
+                //TODO destroy bullets that hit shield
+            }
+
+            //TODO if player was hit, loses (unless INVINCIBLE), also reduce player HEIGHT if crouched and set crouched=false
+        }
 
     }
 
+
     public void generateBullet() {
-        bullets.add(new Bullet(0, 0, 0)); //TODO randomize bullet generation and stuff
+        bullets.add(new Bullet(0, 0, 0)); //TODO randomize bullet generation and stuff.
     }
     public void generatePowerUp() {
         powerUps.add(new PowerUp(0, 0, 0)); //TODO randomize power up generation
